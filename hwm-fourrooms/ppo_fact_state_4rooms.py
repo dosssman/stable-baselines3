@@ -100,7 +100,7 @@ env = make_vec_env(ENV_NAME, n_envs=4, wrapper_kwargs=wrapper_kwargs)
 
 model = PPO("MlpPolicy", env, verbose=1, tensorboard_log="./logs")
 model.learn(total_timesteps=10_000_000, tb_log_name=f"PPO_{ENV_NAME}")
-model.save(f"PPO_{ENV_NAME}_Agent")
+model.save(f"models/PPO_{ENV_NAME}_Agent")
 
 # del model # remove to demonstrate saving and loading
 

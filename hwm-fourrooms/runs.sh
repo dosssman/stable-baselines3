@@ -12,7 +12,7 @@ export MKL_NUM_THREADS=$NUM_CORES OMP_NUM_THREADS=$NUM_CORES
 ############################
 export CUDA_VISIBLE_DEVICES=6
 (sleep 1s && nohup xvfb-run -a python ppo_fact_state_4rooms.py) >& /dev/null &
-(sleep 1s && nohup xvfb-run -a python ppo_full_grid_obs_4rooms.py ) >& /dev/null &
+# (sleep 1s && nohup xvfb-run -a python ppo_full_grid_obs_4rooms.py ) >& /dev/null &
 ############################
 # endregion: PPO Baselines FourRoom task (custom)
 ############################
