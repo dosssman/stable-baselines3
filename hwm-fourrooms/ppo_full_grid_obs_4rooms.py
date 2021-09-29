@@ -143,7 +143,7 @@ class CustomCNN(BaseFeaturesExtractor):
         return self.model(observations)
 
 # Parallel environments
-ENV_NAME = "MiniGrid-FourRooms-Size13-v0"
+ENV_NAME = "MiniGrid-FourRooms-Size15-v0"
 
 wrapper_kwargs = {
     "no_reseed": False,
@@ -159,8 +159,8 @@ policy_kwargs = {
 }
 
 model = PPO("CnnPolicy", env, policy_kwargs=policy_kwargs, verbose=1, tensorboard_log="./logs")
-model.learn(total_timesteps=2000000, tb_log_name=f"PPO_CNN_FullImgObs_{ENV_NAME}")
-# model.save("ppo_fact_state_4rooms")
+model.learn(total_timesteps=10_000_000, tb_log_name=f"PPO_CNN_FullImgObs_{ENV_NAME}")
+model.save(f"PPO_CNN_FullImgObs_{ENV_NAME}_Agent")
 
 # del model # remove to demonstrate saving and loading
 

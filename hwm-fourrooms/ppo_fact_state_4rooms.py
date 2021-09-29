@@ -89,7 +89,7 @@ def make_vec_env(
     return vec_env_cls([make_env(i + start_index) for i in range(n_envs)], **vec_env_kwargs)
 
 # Parallel environments
-ENV_NAME = "MiniGrid-FourRooms-Size13-v0"
+ENV_NAME = "MiniGrid-FourRooms-Size15-v0"
 
 wrapper_kwargs = {
     "no_reseed": False,
@@ -99,8 +99,8 @@ wrapper_kwargs = {
 env = make_vec_env(ENV_NAME, n_envs=4, wrapper_kwargs=wrapper_kwargs)
 
 model = PPO("MlpPolicy", env, verbose=1, tensorboard_log="./logs")
-model.learn(total_timesteps=2000000, tb_log_name=f"PPO_{ENV_NAME}")
-# model.save("ppo_fact_state_4rooms")
+model.learn(total_timesteps=10_000_000, tb_log_name=f"PPO_{ENV_NAME}")
+model.save(f"PPO_{ENV_NAME}_Agent")
 
 # del model # remove to demonstrate saving and loading
 
