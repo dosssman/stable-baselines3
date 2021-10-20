@@ -3,6 +3,7 @@ import gym
 import numpy as np
 import gym_minigrid
 import hwm.gym_minigrid_2.fourroom_cstm # custom FourRoom envs
+import hwm.gym_minigrid_2.empty_cstm
 from gym_minigrid.wrappers import ReseedWrapper, ImgObsWrapper
 from hwm.gym_minigrid_2.wrappers import RGBImgFullGridWrapper, ChannelFirstImgWrapper, \
     RGBImgResizeWrapper, ActionMaskingWrapper
@@ -160,7 +161,7 @@ policy_kwargs = {
 }
 
 model = PPO("CnnPolicy", env, policy_kwargs=policy_kwargs, verbose=1, tensorboard_log="./logs")
-model.learn(total_timesteps=10_000_000, tb_log_name=f"PPO_CNN_FullImgObs_{ENV_NAME}")
+model.learn(total_timesteps=150_000, tb_log_name=f"PPO_CNN_FullImgObs_{ENV_NAME}")
 model.save(f"models/PPO_CNN_FullImgObs_{ENV_NAME}_Agent")
 
 # del model # remove to demonstrate saving and loading
